@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="uk">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="./favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ciganrentauto - Сервіс Оренди Автомобілів (Car Rental Service)</title>
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script type="module" crossorigin src="./assets/index-jjZfyHVP.js"></script>
+    <link rel="stylesheet" crossorigin href="./assets/index-zdufpwyd.css">
+  </head>
+  <body>
+    <!-- Toast Notification Container -->
+    <div id="toast-container"></div>
+
+    <!-- Background Animated Orbs -->
+    <div class="bg-orb orb-1"></div>
+    <div class="bg-orb orb-2"></div>
+    <div class="bg-orb orb-3"></div>
+
+    <!-- Header -->
+    <header class="navbar glass">
+      <div class="logo">
+        <span class="gradient-text">Cigan</span>rentauto
+      </div>
+      <nav id="header-nav">
+        <button id="currency-toggle" class="nav-btn" style="background: transparent; border: 1px solid var(--accent-1); color: var(--accent-1); margin-right: 0.5rem;">USD</button>
+        <a href="#catalog" class="nav-link smooth-scroll">Автопарк</a>
+        <a href="#services" class="nav-link smooth-scroll">Послуги</a>
+        
+        <!-- User Area (Dynamic via JS) -->
+        <button id="open-admin" class="nav-btn admin-badge-btn hidden">🛡️ Адмін-панель</button>
+        <button id="open-cabinet" class="nav-btn hidden">👤 Кабінет</button>
+        <button id="open-auth" class="nav-btn">Увійти</button>
+      </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="hero-content">
+        <h1 class="hero-title">Керуй <span class="gradient-text">Мрією</span> Сьогодні</h1>
+        <p class="hero-subtitle">Преміальний сервіс оренди автомобілів з прозорим розрахунком та гарантованою наявністю.</p>
+        <div class="hero-actions">
+          <button class="btn-primary glow-effect" id="scroll-to-catalog">Обрати авто</button>
+          <a href="#services" class="btn-outline smooth-scroll" style="text-decoration: none; display: inline-flex; align-items: center;">Детальніше</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="container" style="padding-top: 2rem; padding-bottom: 2rem;">
+      <div class="catalog-header" style="grid-column: 1/-1;">
+        <h2>Наші Послуги</h2>
+      </div>
+      <div class="services-grid" style="grid-column: 1/-1;">
+        <div class="service-card glass">
+          <div class="service-icon">🤵</div>
+          <h3>Оренда з водієм</h3>
+          <p>Відпочивайте під час поїздки, поки наш професійний водій піклується про дорогу.</p>
+        </div>
+        <div class="service-card glass">
+          <div class="service-icon">✈️</div>
+          <h3>Трансфер VIP</h3>
+          <p>Зустріч в аеропорту або на вокзалі з табличкою. Пунктуально та з максимальним комфортом.</p>
+        </div>
+        <div class="service-card glass">
+          <div class="service-icon">💍</div>
+          <h3>Авто на весілля</h3>
+          <p>Преміальні автомобілі для вашого ідеального свята. Доступне спеціальне оформлення.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Main Content (Catalog) -->
+    <main id="catalog" class="container">
+      
+      <!-- Filters Sidebar -->
+      <aside class="filters glass">
+        <h3>Параметри</h3>
+        <div class="filter-group">
+          <label>Клас автомобіля</label>
+          <div class="custom-select-wrapper">
+            <select id="class-filter" class="glass-input">
+              <option value="all" style="color: black">Всі класи</option>
+              <option value="economy" style="color: black">Економ</option>
+              <option value="comfort" style="color: black">Комфорт</option>
+              <option value="business" style="color: black">Бізнес</option>
+              <option value="premium" style="color: black">Преміум</option>
+            </select>
+          </div>
+        </div>
+        <div class="filter-group">
+          <label>Коробка передач</label>
+          <div class="custom-select-wrapper">
+            <select id="transmission-filter" class="glass-input">
+              <option value="all" style="color: black">Будь-яка</option>
+              <option value="auto" style="color: black">Автомат</option>
+              <option value="manual" style="color: black">Механіка</option>
+            </select>
+          </div>
+        </div>
+        <div class="filter-group">
+          <label>Статус доступності</label>
+          <div class="custom-select-wrapper">
+            <select id="status-filter" class="glass-input">
+              <option value="all" style="color: black">Усі авто</option>
+              <option value="free" style="color: black">Лише вільні</option>
+              <option value="reserved" style="color: black">Заброньовані</option>
+            </select>
+          </div>
+        </div>
+        <button class="btn-primary full-width" id="apply-filters">Застосувати фільтри</button>
+      </aside>
+
+      <!-- Car Catalog -->
+      <section class="car-catalog">
+        <div class="catalog-header">
+          <h2>Наш Автопарк</h2>
+          <div class="catalog-meta glass">
+            <span id="car-count">Знайдено: 0</span>
+          </div>
+        </div>
+        <!-- Car Grid -->
+        <div class="car-grid" id="car-list">
+          <!-- JS will inject car cards here -->
+        </div>
+      </section>
+      
+    </main>
+
+    <!-- Footer -->
+    <footer class="glass">
+      <div class="footer-content">
+        <div class="logo"><span class="gradient-text">Cigan</span>rentauto</div>
+        <p>Сервіс оренди автомобілів (Тема №5) • Архітектура та бізнес-логіка: Студент 1</p>
+        <p>&copy; 2026. Всі права захищені.</p>
+      </div>
+    </footer>
+
+    <!-- Auth Modal -->
+    <div id="auth-modal" class="modal hidden">
+      <div class="modal-content glass">
+        <button id="close-auth-modal" class="close-btn">&times;</button>
+        
+        <div class="auth-tabs">
+          <button class="auth-tab active" data-tab="login">Вхід</button>
+          <button class="auth-tab" data-tab="register">Реєстрація</button>
+        </div>
+
+        <!-- Login Form -->
+        <form id="form-login" class="auth-form">
+          <div class="form-group">
+            <label>Email</label>
+            <input type="email" id="login-email" class="glass-input" placeholder="admin@ciganrent.com або user@ciganrent.com" required>
+          </div>
+          <div class="form-group">
+            <label>Пароль</label>
+            <input type="password" id="login-password" class="glass-input" placeholder="admin або password" required>
+          </div>
+          <button type="submit" class="btn-primary full-width">Увійти</button>
+          <p style="margin-top: 1rem; font-size: 0.8rem; color: var(--text-muted); text-align: center;">
+            Демо: <b>admin@ciganrent.com / admin</b> або <b>user@ciganrent.com / password</b>
+          </p>
+        </form>
+
+        <!-- Register Form -->
+        <form id="form-register" class="auth-form hidden">
+          <div class="form-group">
+            <label>Ваше Ім'я</label>
+            <input type="text" id="reg-name" class="glass-input" placeholder="Артемій Мороз" required>
+          </div>
+          <div class="form-group">
+            <label>Email</label>
+            <input type="email" id="reg-email" class="glass-input" placeholder="email@example.com" required>
+          </div>
+          <div class="form-group">
+            <label>Пароль</label>
+            <input type="password" id="reg-password" class="glass-input" placeholder="Створіть пароль" required>
+          </div>
+          <button type="submit" class="btn-primary full-width">Зареєструватися</button>
+        </form>
+      </div>
+    </div>
+
+    <!-- Booking Modal (Бізнес-логіка розрахунку оренди) -->
+    <div id="booking-modal" class="modal hidden">
+      <div class="modal-content glass">
+        <button id="close-booking-modal" class="close-btn">&times;</button>
+        <h3 style="font-size: 1.6rem; margin-bottom: 1.2rem;">Оформлення Оренди</h3>
+        
+        <div class="booking-car-header" id="booking-car-summary">
+          <!-- Car details injected by JS -->
+        </div>
+
+        <form id="booking-form">
+          <input type="hidden" id="booking-car-id" />
+
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+            <div class="form-group">
+              <label>Дата початку оренди</label>
+              <input type="date" id="booking-start-date" class="glass-input" required />
+            </div>
+            <div class="form-group">
+              <label>Дата завершення</label>
+              <input type="date" id="booking-end-date" class="glass-input" required />
+            </div>
+          </div>
+
+          <label style="color: var(--text-muted); font-size: 0.9rem; display: block; margin-bottom: 0.5rem;">Додаткові опції сервісу</label>
+          <div class="extras-checkbox-list" id="booking-extras">
+            <label class="extra-checkbox-item">
+              <input type="checkbox" value="kasko" /> 🛡️ Повне КАСКО (+$15 / доба)
+            </label>
+            <label class="extra-checkbox-item">
+              <input type="checkbox" value="child_seat" /> 👶 Дитяче крісло Isofix (+$5 / доба)
+            </label>
+            <label class="extra-checkbox-item">
+              <input type="checkbox" value="driver" /> 🤵 Особистий водій VIP (+$60 / доба)
+            </label>
+            <label class="extra-checkbox-item">
+              <input type="checkbox" value="wifi" /> 🌐 5G Wi-Fi роутер (+$4 / доба)
+            </label>
+          </div>
+
+          <!-- Price Calculation Summary Card -->
+          <div class="cost-breakdown-card" id="booking-price-breakdown">
+            <!-- Dynamic calculation breakdown -->
+          </div>
+
+          <button type="submit" class="btn-primary full-width" id="confirm-booking-btn">Підтвердити та забронювати</button>
+        </form>
+      </div>
+    </div>
+
+    <!-- Personal Cabinet Modal -->
+    <div id="cabinet-modal" class="modal hidden">
+      <div class="modal-content glass wide-modal">
+        <button id="close-cabinet-modal" class="close-btn">&times;</button>
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
+          <div>
+            <h3 style="font-size: 1.8rem;" id="cabinet-user-name">Особистий кабінет</h3>
+            <p style="color: var(--text-muted); font-size: 0.95rem;" id="cabinet-user-email"></p>
+          </div>
+          <button id="btn-logout" class="btn-outline" style="padding: 0.5rem 1.2rem; font-size: 0.9rem;">Вийти з акаунта</button>
+        </div>
+
+        <h4 style="font-size: 1.3rem; margin-bottom: 0.8rem;">Мої бронювання та активні оренди</h4>
+        <div id="cabinet-bookings-list" class="booking-history-list">
+          <!-- Injected by JS -->
+        </div>
+      </div>
+    </div>
+
+    <!-- Admin Panel Modal -->
+    <div id="admin-modal" class="modal hidden">
+      <div class="modal-content glass wide-modal">
+        <button id="close-admin-modal" class="close-btn">&times;</button>
+        <h3 style="font-size: 1.8rem; margin-bottom: 1.5rem;">Панель Адміністратора (Управління системою)</h3>
+
+        <!-- Statistics Dashboard -->
+        <div class="admin-stats-grid" id="admin-stats">
+          <!-- Stats injected by JS -->
+        </div>
+
+        <div style="display: flex; gap: 1rem; margin-bottom: 1.5rem; border-bottom: 1px solid var(--glass-border);">
+          <button class="auth-tab active" id="tab-admin-cars-btn">Автопарк (+ Додати авто)</button>
+          <button class="auth-tab" id="tab-admin-bookings-btn">Усі замовлення клієнтів</button>
+        </div>
+
+        <!-- Section 1: Manage Cars -->
+        <div id="admin-section-cars">
+          <form id="admin-add-car-form" style="background: rgba(255,255,255,0.03); padding: 1.5rem; border-radius: 16px; margin-bottom: 1.5rem; border: 1px solid var(--glass-border);">
+            <h4 style="margin-bottom: 1rem;">Додати нове авто в каталог</h4>
+            <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1rem;">
+              <div class="form-group">
+                <label>Марка (Make)</label>
+                <input type="text" id="add-make" class="glass-input" placeholder="напр. BMW" required />
+              </div>
+              <div class="form-group">
+                <label>Модель (Model)</label>
+                <input type="text" id="add-model" class="glass-input" placeholder="напр. X5 M" required />
+              </div>
+              <div class="form-group">
+                <label>Клас (Class)</label>
+                <select id="add-class" class="glass-input">
+                  <option value="economy" style="color:black">Економ</option>
+                  <option value="comfort" style="color:black">Комфорт</option>
+                  <option value="business" style="color:black">Бізнес</option>
+                  <option value="premium" style="color:black">Преміум</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label>Ціна за добу ($)</label>
+                <input type="number" id="add-price" class="glass-input" placeholder="120" required />
+              </div>
+              <div class="form-group">
+                <label>Коробка передач</label>
+                <select id="add-trans" class="glass-input">
+                  <option value="auto" style="color:black">Автомат</option>
+                  <option value="manual" style="color:black">Механіка</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label>URL зображення авто</label>
+                <input type="url" id="add-image" class="glass-input" placeholder="https://..." />
+              </div>
+            </div>
+            <button type="submit" class="btn-primary" style="padding: 0.6rem 2rem;">+ Зберегти автомобіль</button>
+          </form>
+
+          <h4 style="margin-bottom: 1rem;">Поточний список авто</h4>
+          <div id="admin-cars-list" class="booking-history-list"></div>
+        </div>
+
+        <!-- Section 2: Manage All Bookings -->
+        <div id="admin-section-bookings" class="hidden">
+          <div id="admin-bookings-list" class="booking-history-list"></div>
+        </div>
+      </div>
+    </div>
+
+  </body>
+</html>
