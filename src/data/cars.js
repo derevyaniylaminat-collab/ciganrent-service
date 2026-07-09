@@ -6,7 +6,7 @@ export const cars = [
     class: "comfort",
     transmission: "auto",
     price: 45,
-    image: "https://images.unsplash.com/photo-1621007947382-bb3c3994e3fd?auto=format&fit=crop&w=800&q=80"
+    image: "https://images.unsplash.com/photo-1657872737697-737a2d123ef2?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
   },
   {
     id: 2,
@@ -15,7 +15,7 @@ export const cars = [
     class: "premium",
     transmission: "auto",
     price: 150,
-    image: "https://images.unsplash.com/photo-1617531653332-bd46c24f2068?auto=format&fit=crop&w=800&q=80"
+    image: "https://images.unsplash.com/photo-1680446983373-853872fb667a?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
   },
   {
     id: 3,
@@ -24,7 +24,7 @@ export const cars = [
     class: "economy",
     transmission: "manual",
     price: 25,
-    image: "https://images.unsplash.com/photo-1549317661-bd32c8ce0be2?auto=format&fit=crop&w=800&q=80"
+    image: "https://images.unsplash.com/photo-1740571214523-4951671d8229?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
   },
   {
     id: 4,
@@ -33,7 +33,7 @@ export const cars = [
     class: "business",
     transmission: "auto",
     price: 90,
-    image: "https://images.unsplash.com/photo-1556189250-72ba954cfc2b?auto=format&fit=crop&w=800&q=80"
+    image: "https://images.unsplash.com/photo-1729966085578-c7b281cf11da?q=80&w=1471&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
   },
   {
     id: 5,
@@ -42,7 +42,7 @@ export const cars = [
     class: "premium",
     transmission: "auto",
     price: 250,
-    image: "https://images.unsplash.com/photo-1503376760367-1549fbb11c1c?auto=format&fit=crop&w=800&q=80"
+    image: "https://images.unsplash.com/photo-1695328478607-bcd371587e7b?q=80&w=1631&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
   },
   {
     id: 6,
@@ -51,7 +51,7 @@ export const cars = [
     class: "business",
     transmission: "auto",
     price: 85,
-    image: "https://images.unsplash.com/photo-1606152421802-db97b9c7a11b?auto=format&fit=crop&w=800&q=80"
+    image: "https://images.unsplash.com/photo-1540066019607-e5f69323a8dc?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
   },
   {
     id: 7,
@@ -69,7 +69,7 @@ export const cars = [
     class: "premium",
     transmission: "auto",
     price: 110,
-    image: "https://images.unsplash.com/photo-1584345604476-8ec5e12e42dd?auto=format&fit=crop&w=800&q=80"
+    image: "https://images.unsplash.com/photo-1625231334168-35067f8853ed?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
   },
   {
     id: 9,
@@ -87,7 +87,7 @@ export const cars = [
     class: "premium",
     transmission: "auto",
     price: 200,
-    image: "https://images.unsplash.com/photo-1606016159991-cdf4a332a688?auto=format&fit=crop&w=800&q=80"
+    image: "https://images.unsplash.com/photo-1637859460045-ac3ae9ced99d?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
   },
   {
     id: 11,
@@ -96,7 +96,7 @@ export const cars = [
     class: "economy",
     transmission: "auto",
     price: 35,
-    image: "https://images.unsplash.com/photo-1612862862126-865765b211bb?auto=format&fit=crop&w=800&q=80"
+    image: "https://images.unsplash.com/photo-1646119253693-0b80f2906791?q=80&w=880&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
   },
   {
     id: 12,
@@ -105,7 +105,7 @@ export const cars = [
     class: "comfort",
     transmission: "auto",
     price: 55,
-    image: "https://images.unsplash.com/photo-1552515082-8924b17bd967?auto=format&fit=crop&w=800&q=80"
+    image: "https://images.unsplash.com/photo-1658662160331-62f7e52e63de?q=80&w=1471&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
   },
   {
     id: 13,
@@ -114,6 +114,6 @@ export const cars = [
     class: "business",
     transmission: "auto",
     price: 120,
-    image: "https://images.unsplash.com/photo-1559416523-140ddc3d238c?auto=format&fit=crop&w=800&q=80"
+    image: "https://images.unsplash.com/photo-1664427356346-c31b46248e71?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
   }
 ];
