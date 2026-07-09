@@ -2,7 +2,7 @@
 import { cars as initialCars } from '../data/cars.js';
 
 const STORAGE_KEYS = {
-  CARS: 'ciganrent_db_cars_v2',
+  CARS: 'ciganrent_db_cars_v3',
   USERS: 'ciganrent_db_users_v2',
   BOOKINGS: 'ciganrent_db_bookings_v2',
   SESSION: 'ciganrent_current_session_v2'
@@ -10,19 +10,30 @@ const STORAGE_KEYS = {
 
 export class DatabaseService {
   static init() {
-    // Initialize cars if not present
-    if (!localStorage.getItem(STORAGE_KEYS.CARS)) {
-      const enrichedCars = initialCars.map(car => ({
-        ...car,
-        year: car.year || 2024,
-        fuel: car.fuel || (car.make === 'Tesla' ? 'Електро' : 'Бензин / Гібрид'),
-        deposit: car.price * 5,
-        status: car.status || 'free', // 'free' | 'reserved'
-        rating: 5.0,
-        tripsCount: Math.floor(Math.random() * 25) + 5
-      }));
-      localStorage.setItem(STORAGE_KEYS.CARS, JSON.stringify(enrichedCars));
-    }
+    // Initialize cars or sync changes from cars.js (dynamic update)
+    let storedCars = [];
+    try {
+      storedCars = JSON.parse(localStorage.getItem(STORAGE_KEYS.CARS)) || [];
+    } catch(e) {}
+
+    // Map fresh cars from cars.js and preserve their dynamic state from localStorage
+    const enrichedCars = initialCars.map(freshCar => {
+      const existing = storedCars.find(c => c.id === freshCar.id);
+      return {
+        ...freshCar, // Always take the latest image, price, make, etc.
+        year: freshCar.year || (existing?.year || 2024),
+        fuel: freshCar.fuel || (existing?.fuel || (freshCar.make === 'Tesla' ? 'Електро' : 'Бензин / Гібрид')),
+        deposit: freshCar.price * 5,
+        status: existing?.status || freshCar.status || 'free',
+        rating: existing?.rating || 5.0,
+        tripsCount: existing?.tripsCount || Math.floor(Math.random() * 25) + 5
+      };
+    });
+
+    // Keep any cars added manually via Admin Panel
+    const adminAddedCars = storedCars.filter(sc => !initialCars.some(ic => ic.id === sc.id));
+    
+    localStorage.setItem(STORAGE_KEYS.CARS, JSON.stringify([...enrichedCars, ...adminAddedCars]));
 
     // Initialize default users if not present
     if (!localStorage.getItem(STORAGE_KEYS.USERS)) {
